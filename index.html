@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- EDIT: replace the business name, city and description everywhere (search for "EDIT") -->
+<title>Kokan Bakes | Fresh bakery in Vashi, Navi Mumbai</title>
+<meta name="description" content="Kokan Bakes is a family-run neighbourhood bakery in Vashi, Navi Mumbai. Fresh pav, cakes and cookies baked every morning. Order on WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- SEO: structured data so Google understands this is a local business (EDIT the details) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Kokan Bakes",
+  "image": "https://example.com/photo.jpg",
+  "telephone": "+91-9999999999",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop 4, Sector 17",
+    "addressLocality": "Vashi, Navi Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400703",
+    "addressCountry": "IN"
+  },
+  "openingHours": "Mo-Su 07:00-21:00"
+}
+</script>
+
+<style>
+  :root {
+    --ink: #12343b;
+    --ink-soft: #3f5a60;
+    --saffron: #f2b705;
+    --paper: #f6f8f7;
+    --white: #ffffff;
+    --line: #cfdad8;
+    --radius: 10px;
+    --max: 1080px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; }
+  p { max-width: 62ch; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+  section { padding: 4.5rem 0; }
+
+  /* Header */
+  header { background: var(--ink); color: var(--white); position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+  .logo { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; padding: .4rem 0; border-bottom: 2px solid transparent; }
+  nav a:hover { border-color: var(--saffron); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--white); color: var(--white); padding: .4rem .8rem; border-radius: 6px; font: inherit; cursor: pointer; }
+
+  /* Hero */
+  .hero { background: var(--ink); color: var(--white); padding: 4rem 0 5rem; }
+  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 800; }
+  .hero p { color: #d5e2e0; margin: 1.2rem 0 1.8rem; }
+  .btn {
+    display: inline-block; background: var(--saffron); color: var(--ink);
+    font-weight: 600; padding: .8rem 1.5rem; border-radius: var(--radius);
+    text-decoration: none; border: 0; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .btn:hover { background: #ffc92e; }
+  .btn.ghost { background: transparent; color: var(--white); border: 2px solid var(--white); margin-left: .6rem; }
+  .btn.ghost:hover { background: rgba(255,255,255,.12); }
+
+  /* Live open/closed status: the one memorable element */
+  .status {
+    background: var(--paper); color: var(--ink); border-radius: var(--radius);
+    padding: 1.6rem; border-left: 8px solid var(--saffron);
+  }
+  .status strong { font-family: "Bricolage Grotesque", sans-serif; font-size: 2rem; display: block; line-height: 1.1; }
+  .status.closed { border-left-color: #b4412c; }
+  .status small { color: var(--ink-soft); display: block; margin-top: .5rem; }
+  .status ul { list-style: none; padding: 0; margin: 1rem 0 0; font-size: .95rem; }
+  .status li { display: flex; justify-content: space-between; padding: .2rem 0; border-top: 1px solid var(--line); }
+  .status li.today { font-weight: 600; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .facts { display: grid; gap: 1rem; }
+  .fact { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.3rem; }
+  .fact b { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.15rem; display: block; }
+
+  /* Menu */
+  #menu { background: var(--white); }
+  .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0 2rem; }
+  .filters button {
+    font: inherit; padding: .45rem 1.1rem; border-radius: 999px; cursor: pointer;
+    border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+  .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .item { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+  .photo {
+    position: relative; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden;
+    background: var(--paper); display: grid; place-items: center; font-size: 3rem; margin-bottom: .4rem;
+  }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .item h3 { font-size: 1.2rem; }
+  .item p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+  .price { font-weight: 600; margin-top: auto; padding-top: .5rem; }
+  .item a { font-size: .95rem; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  form { display: grid; gap: 1rem; }
+  label { font-weight: 600; display: grid; gap: .3rem; }
+  input, textarea {
+    font: inherit; padding: .7rem .9rem; border: 1.5px solid var(--ink-soft);
+    border-radius: 8px; background: var(--white); color: var(--ink);
+  }
+  input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #b4412c; }
+  .error { color: #b4412c; font-weight: 400; font-size: .92rem; min-height: 1.1em; }
+  .map { border: 0; width: 100%; height: 280px; border-radius: var(--radius); margin-top: 1rem; }
+  #form-note { font-weight: 600; }
+
+  footer { background: var(--ink); color: #d5e2e0; padding: 2rem 0; font-size: .95rem; }
+
+  /* One page-load moment only: the status card settles in */
+  @keyframes settle { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .status { animation: settle .6s ease-out both; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .status { animation: none; }
+  }
+
+  /* Mobile */
+  @media (max-width: 800px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    section { padding: 3rem 0; }
+    .menu-btn { display: block; }
+    nav ul { display: none; position: absolute; left: 0; right: 0; top: 64px; background: var(--ink); flex-direction: column; gap: 0; padding: .5rem 1.25rem 1rem; }
+    nav ul.open { display: flex; }
+    nav li a { display: block; padding: .7rem 0; }
+    .btn.ghost { margin: .6rem 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Kokan Bakes</a> <!-- EDIT -->
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav aria-label="Main">
+      <ul id="navList">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Fresh from our oven, every morning.</h1>
+        <p>A family-run bakery in Vashi, Navi Mumbai. Soft pav, eggless cakes and butter cookies, baked in small batches since 1998.</p>
+        <a class="btn" href="#menu">See the menu</a>
+        <a class="btn ghost" href="#contact">Order on WhatsApp</a>
+      </div>
+
+      <div class="status" id="status" aria-live="polite">
+        <strong id="statusText">Checking hours…</strong>
+        <small id="statusSub"></small>
+        <ul id="hoursList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2>Baked by the same family for 25 years</h2>
+        <p>We started with one oven and a recipe for pav from my grandmother's kitchen. Today we still bake before sunrise, use no preservatives, and know most of our customers by name.</p>
+        <p>Order a birthday cake, a tray of cookies for a function, or just pick up bread on your way to work.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>No preservatives</b>Everything is baked fresh each day.</div>
+        <div class="fact"><b>Eggless options</b>Most cakes can be made without egg.</div>
+        <div class="fact"><b>Bulk and festival orders</b>Order 2 days ahead for large quantities.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>What we bake</h2>
+      <p>Prices are for one piece or one standard pack. Custom cakes are priced after we talk.</p>
+      <div class="filters" role="group" aria-label="Filter menu">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="bread" aria-pressed="false">Bread</button>
+        <button type="button" data-filter="cakes" aria-pressed="false">Cakes</button>
+        <button type="button" data-filter="snacks" aria-pressed="false">Snacks</button>
+      </div>
+      <div class="items" id="items"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Place an order</h2>
+        <form id="orderForm" novalidate>
+          <label>Your name
+            <input type="text" id="name" autocomplete="name" required>
+            <span class="error" id="nameErr"></span>
+          </label>
+          <label>Phone number
+            <input type="tel" id="phone" autocomplete="tel" inputmode="numeric" placeholder="10-digit mobile number" required>
+            <span class="error" id="phoneErr"></span>
+          </label>
+          <label>What would you like?
+            <textarea id="message" rows="4" required></textarea>
+            <span class="error" id="msgErr"></span>
+          </label>
+          <button class="btn" type="submit">Send order on WhatsApp</button>
+          <p id="form-note" role="status"></p>
+        </form>
+      </div>
+      <div>
+        <h2>Find us</h2>
+        <p>Shop 4, Sector 17, Vashi, Navi Mumbai 400703<br>
+           Call: <a href="tel:+919999999999">+91 99999 99999</a><br>
+           Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+        <!-- EDIT: get your own embed link from Google Maps > Share > Embed a map -->
+        <iframe class="map" title="Map showing Kokan Bakes in Vashi" loading="lazy"
+          src="https://www.google.com/maps?q=Vashi,Navi+Mumbai&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Kokan Bakes. Vashi, Navi Mumbai.</div>
+</footer>
+
+<script>
+  /* ============ EDIT THESE DETAILS ============ */
+  const WHATSAPP_NUMBER = "919999999999"; // country code + number, no + or spaces
+
+  // Opening hours. Day 0 = Sunday ... 6 = Saturday. Times in 24-hour format.
+  const HOURS = {
+    0: [8, 21], 1: [7, 21], 2: [7, 21], 3: [7, 21], 4: [7, 21], 5: [7, 21], 6: [7, 22]
+  };
+
+  // Put your photos in an "images" folder next to index.html, named as below.
+  // If a photo is missing, the emoji shows instead.
+  const MENU = [
+    { name: "Ladi pav", img: "images/ladi-pav.jpg", cat: "bread", emoji: "🍞", desc: "Soft, fresh pav, baked every morning.", price: "₹30 / 6 pcs" },
+    { name: "Whole wheat bread", img: "images/wheat-bread.jpg", cat: "bread", emoji: "🥖", desc: "No maida. Sliced on request.", price: "₹55 / loaf" },
+    { name: "Garlic bun", img: "images/garlic-bun.jpg", cat: "bread", emoji: "🧄", desc: "Buttery buns with garlic and herbs.", price: "₹20 each" },
+    { name: "Chocolate truffle cake", img: "images/chocolate-cake.jpg", cat: "cakes", emoji: "🍰", desc: "Eggless option available. Half kg.", price: "₹550" },
+    { name: "Pineapple cake", img: "images/pineapple-cake.jpg", cat: "cakes", emoji: "🎂", desc: "Light sponge with fresh cream. Half kg.", price: "₹450" },
+    { name: "Butter cookies", img: "images/cookies.jpg", cat: "snacks", emoji: "🍪", desc: "Crisp, small-batch cookies.", price: "₹120 / 250 g" },
+    { name: "Khari biscuits", img: "images/khari.jpg", cat: "snacks", emoji: "🥐", desc: "Flaky, perfect with chai.", price: "₹90 / 250 g" },
+    { name: "Veg puff", img: "images/veg-puff.jpg", cat: "snacks", emoji: "🥟", desc: "Spiced potato filling, baked fresh.", price: "₹25 each" }
+  ];
+  /* ============================================ */
+
+  const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const pad = n => String(n).padStart(2, "0");
+  const fmt = h => { const s = h >= 12 ? "pm" : "am"; return ((h + 11) % 12 + 1) + " " + s; };
+
+  /* ---- Open / closed status ---- */
+  function renderStatus() {
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const [open, close] = HOURS[day];
+    const isOpen = hour >= open && hour < close;
+    const box = document.getElementById("status");
+    const text = document.getElementById("statusText");
+    const sub = document.getElementById("statusSub");
+
+    box.classList.toggle("closed", !isOpen);
+    if (isOpen) {
+      text.textContent = "Open now";
+      sub.textContent = "Closes at " + fmt(close) + " today";
+    } else if (hour < open) {
+      text.textContent = "Closed right now";
+      sub.textContent = "Opens at " + fmt(open) + " today";
+    } else {
+      const next = (day + 1) % 7;
+      text.textContent = "Closed for today";
+      sub.textContent = "Opens at " + fmt(HOURS[next][0]) + " tomorrow";
+    }
+
+    document.getElementById("hoursList").innerHTML = DAYS.map((d, i) =>
+      `<li class="${i === day ? "today" : ""}"><span>${d}</span><span>${fmt(HOURS[i][0])} to ${fmt(HOURS[i][1])}</span></li>`
+    ).join("");
+  }
+
+  /* ---- Menu with filters ---- */
+  const itemsEl = document.getElementById("items");
+  function renderMenu(filter) {
+    const list = filter === "all" ? MENU : MENU.filter(m => m.cat === filter);
+    itemsEl.innerHTML = list.map(m => `
+      <article class="item">
+        <div class="photo">
+          <span aria-hidden="true">${m.emoji}</span>
+          <img src="${m.img}" alt="${m.name}" loading="lazy" onerror="this.remove()">
+        </div>
+        <h3>${m.name}</h3>
+        <p>${m.desc}</p>
+        <span class="price">${m.price}</span>
+        <a href="#contact" data-order="${m.name}">Order this</a>
+      </article>`).join("");
+  }
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", "false"));
+      btn.setAttribute("aria-pressed", "true");
+      renderMenu(btn.dataset.filter);
+    });
+  });
+
+  // "Order this" fills the message box
+  itemsEl.addEventListener("click", e => {
+    const link = e.target.closest("[data-order]");
+    if (!link) return;
+    const box = document.getElementById("message");
+    box.value = (box.value ? box.value + "\n" : "") + "I would like to order: " + link.dataset.order;
+  });
+
+  /* ---- Mobile menu ---- */
+  const menuBtn = document.getElementById("menuBtn");
+  const navList = document.getElementById("navList");
+  menuBtn.addEventListener("click", () => {
+    const open = navList.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open);
+  });
+  navList.addEventListener("click", () => {
+    navList.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+
+  /* ---- Order form: validate, then open WhatsApp ----
+     No server needed. To receive orders by email instead, use a form service
+     such as Formspree and send the form data to it with fetch(). */
+  const form = document.getElementById("orderForm");
+  function setError(inputId, errId, msg) {
+    const input = document.getElementById(inputId);
+    document.getElementById(errId).textContent = msg;
+    input.setAttribute("aria-invalid", msg ? "true" : "false");
+    return !msg;
+  }
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.replace(/\s|-/g, "");
+    const message = document.getElementById("message").value.trim();
+
+    const ok = [
+      setError("name", "nameErr", name.length < 2 ? "Enter your name." : ""),
+      setError("phone", "phoneErr", /^(\+91)?[6-9]\d{9}$/.test(phone) ? "" : "Enter a valid 10-digit mobile number."),
+      setError("message", "msgErr", message.length < 3 ? "Tell us what you would like to order." : "")
+    ].every(Boolean);
+    if (!ok) return;
+
+    const text = `Hello, I am ${name} (${phone}).\n${message}`;
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+    document.getElementById("form-note").textContent = "Opening WhatsApp so you can send your order.";
+    form.reset();
+  });
+
+  /* ---- Start ---- */
+  renderStatus();
+  setInterval(renderStatus, 60000);
+  renderMenu("all");
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
